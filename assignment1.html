@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <title>Assignment1: Blink</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,12 +12,60 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 1!</h1>
+            <h1>Assignment1: Blink</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="Video.gif" width=800></a>
             </p>
             <p>
-            Here is all the documentation for assignment 1!
+            This is the the gif for the circuit's operation!
+            </p>
+            <img src="Schematic.jpg" width=800></a>
+            </p>
+            <p>
+             Circuit's Schematic
+            </p>
+            <img src="Circuit.jpg" width=800></a>
+            </p>
+            <p>
+             Photo of the Circuit
+            </p>
+            <br>
+            <p>
+             Firmware:
+            </p>
+            <p>
+            <pre>
+  	<code>
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  digitalWrite(13, HIGH);// turn the LED 13 on (HIGH is the voltage level)    
+  digitalWrite(12, HIGH);// turn the LED 12 on 
+  delay(1000);                       // wait for a second
+  digitalWrite(13, LOW);// turn the LED 13 off by making the voltage LOW
+  digitalWrite(11, HIGH);// turn the LED 11 on
+  delay(1000);                      // wait for a second
+  digitalWrite(11, LOW);// turn the LED 11 off
+  digitalWrite(13, HIGH);// turn the LED 13 on
+  digitalWrite(12, LOW); // turn the LED 12 off
+  delay(1000);                      // wait for a second
+  digitalWrite(13, LOW);// turn the LED 13 off
+  delay(1000);                       // wait for a second
+  digitalWrite(13, HIGH);// turn the LED 13 on
+  delay(1000);                      // wait for a second
+  digitalWrite(13, LOW);// turn the LED 13 off
+  delay(1000);                      // wait for a second
+  digitalWrite(12, HIGH);  // turn the LED 12 on
+}
+  	</code>
+            </pre>
             </p>
         </div>
         
