@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <title>Assignment1: Fade</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,12 +12,86 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 2!</h1>
+            <h1>Assignment1: Fade</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="Video2.gif" width=800></a>
             </p>
             <p>
-            Here is all the documentation for assignment 2!
+            This is the the gif for the circuit's operation!
+            </p>
+            <img src="Schematic2.jpg" width=800></a>
+            </p>
+            <p>
+             Circuit's Schematic
+            </p>
+            <img src="Circuit2.jpg" width=800></a>
+            </p>
+            <p>
+             Photo of the Circuit
+            </p>
+            <br>
+            <p>
+             Firmware:
+            </p>
+            <p>
+            <pre>
+  	<code>
+// constants won't change. They're used here to set pin numbers:
+  const int R =  9;    // the number of the LED Red pin
+  const int G =  10;    // the number of the LED Green pin
+  const int B =  11;     // the number of the LED Blue pin
+  const int buttonPin = 2;     // the number of the pushbutton pin
+
+// variables will change:
+  int buttonState = 0;         // variable for reading the pushbutton status
+
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(R, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(B, OUTPUT);
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);
+}
+
+void loop() {
+  // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+
+  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (buttonState == HIGH) {
+    // turn LED Red on: fade in from min to max in increments of 1 points:
+      for(int i = 0; i < 256;i++){
+        // sets the value (range from 0 to 255):
+        analogWrite(R, i);
+        // wait for 10 milliseconds to see the dimming effect
+        delay(10);
+      }
+      // turn LED Green on: fade in from min to max in increments of 1 points:
+      for(int i = 0; i < 256;i++){
+        // sets the value (range from 0 to 255):
+        analogWrite(G, i);
+        // wait for 10 milliseconds to see the dimming effect
+        delay(10);
+      }
+      // turn LED Blue on: fade in from min to max in increments of 1 points:
+      for(int i = 0; i < 256;i++){
+        // sets the value (range from 0 to 255):
+        analogWrite(B, i);
+        // wait for 10 milliseconds to see the dimming effect
+        delay(10);
+      } 
+  } else {
+    // turn LED Red off:
+    digitalWrite(R, LOW);
+    // turn LED Green off:
+    digitalWrite(G, LOW);
+    // turn LED Blue off:
+    digitalWrite(B, LOW);
+  }
+}
+  	</code>
+            </pre>
             </p>
         </div>
         
