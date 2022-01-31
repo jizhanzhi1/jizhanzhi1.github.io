@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Assignment1: Fade</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Assignment3: InputOutput</h1>
+            <p>
+            <img src="Video3.gif" width=800></a>
+            </p>
+            <p>
+            This is the the gif for the circuit's operation!
+            </p>
+            <img src="Schematic3.jpg" width=800></a>
+            </p>
+            <p>
+             Circuit's Schematic
+            </p>
+            <img src="Circuit3.jpg" width=800></a>
+            </p>
+            <p>
+             Photo of the Circuit
+            </p>
+            <p>
+            <img src="Monitor.png" width=800></a>
+            </p>
+            <p>
+             Monitor screen
+            </p>
+            <br>
+            <p>
+             Firmware:
+            </p>
+            <p>
+            <pre>
+  	<code>
+void setup() {
+  // initialize the LED pin as an output:
+  pinMode(13, OUTPUT);
+  // initialize A0 as an input:
+  pinMode(A0, INPUT);
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // read the input pin:
+  int sensorValue = analogRead(A0);    
+  // delay in between reads for stability  
+  delay(1);
+  // map it to the range of the analog out:
+  int outputValue = map(sensorValue, 0, 1023, 0, 255);
+  // print text in the serial monitor:
+  Serial.print("Sensor Value = ");
+  // print sensorValue in the serial monitor:
+  Serial.print(sensorValue);
+  // print text in the serial monitor:
+  Serial.print("\t Output Value = ");
+  // print outputrValue in the serial monitor:
+  Serial.println(outputValue);
+  // if the outputValue is bigger than 110 (which is the normal received value by testing),
+  // turn the pin 13 on. 255 is the is max duty cycle of analogWrite.
+  if(outputValue >= 110){
+  analogWrite(13, 255);
+  // if the outputValue is less than 110 due to the light changes,
+  // turn the pin 13 off. 0 is the is min duty cycle of analogWrite.
+  } else {
+  analogWrite(13, 0);
+  }
+
+}
+  	</code>
+            </pre>
+            </p>
+        </div>
+        
+    </body>
+</html>
