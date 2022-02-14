@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Assignment4: Libraries</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Assignment4: Libraries</h1>
+            <p>
+            <img src="Video4.gif" width=800></a>
+            </p>
+            <p>
+            This is the the gif for the circuit's operation!
+            </p>
+            <img src="Schematic4.jpg" width=800></a>
+            </p>
+            <p>
+             Circuit's Schematic
+            </p>
+            <img src="Circuit4.jpg" width=800></a>
+            </p>
+            <p>
+             Photo of the Circuit
+            </p>
+            <br>
+            <p>
+             Firmware:
+            </p>
+            <p>
+            <pre>
+  	<code>
+int x = A0;  // the number of the joystick x-axis pin  
+int y = A1;  // the number of the joystick y-axis pin 
+int xval = 0; // variable for reading the joystick x-axis status
+int yval = 0; // variable for reading the joystick y-axis status
+
+#include <Servo.h>
+
+Servo myServo;  // create servo object to control a servo
+
+void setup() {
+  Serial.begin(9600); // initialize the serial communications:
+  myServo.attach(9); // attaches the servo on pin 9 to the servo object
+}
+
+void loop() {
+  xval = analogRead(x); // reads the x value of the joystick (value between 0 and 1023)
+  yval = analogRead(y); // reads the y value of the joystick (value between 0 and 1023)
+
+  // print the results to the Serial Monitor:
+  Serial.print("x = ");
+  Serial.println(xval);
+  Serial.print("y = ");
+  Serial.println(yval);
+  Serial.println();  
+  int writeValue = map(xval, 0, 1023, 0, 180); //scale the angle between 0 and 180 from analog reading
+  myServo.write(writeValue); // set the servo position
+  delay(15); // wait for the servo to get there
+}
+
+}
+  	</code>
+            </pre>
+            </p>
+        </div>
+        
+    </body>
+</html>
