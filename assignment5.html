@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Assignment5: Air cooling</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Assignment5: Air cooling</h1>
+            <p>
+            <img src="Video5.gif" width=800></a>
+            </p>
+            <p>
+            This is the the gif for the circuit's operation!
+            </p>
+            <img src="Schematic5.jpg" width=800></a>
+            </p>
+            <p>
+             Circuit's Schematic
+            </p>
+            <img src="Circuit5.jpg" width=800></a>
+            </p>
+            <p>
+             Photo of the Circuit
+            </p>
+            <br>
+            <p>
+             Firmware:
+            </p>
+            <p>
+            <pre>
+  	<code>
+#include <dht.h>
+dht DHT;
+#define DHT11_PIN 7
+int motorPin = 3; // set pin 3 as motorPin
+
+void setup(){
+  pinMode(3, OUTPUT); // pin 3 as output
+  analogWrite(3, 0); // pin 3 at LOW/OFF state initially.
+}
+
+void loop(){
+  int chk = DHT.read11(DHT11_PIN); // read the temperature
+  // open the fan automatically based on the detected temperature
+  if (DHT.temperature >= 27 ){ // if temperature is greater than 27 celsius
+    analogWrite(motorPin, 400); // turn on the motor at medium level.
+  } else if (DHT.temperature >= 30){ // if temperature is greater than 30 celsius
+    analogWrite(motorPin, 800); // turn on the motor at high level.
+  } else { // if temperature is lower than 27 celsius
+    analogWrite(motorPin, 0); // turn off the motor.
+  }
+}
+
+  	</code>
+            </pre>
+            </p>
+        </div>
+        
+    </body>
+</html>
