@@ -1,0 +1,108 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Final Project: Beeping Coaster</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>Final Project: Beeping Coaster</h1>
+            <p>
+             Project concept: A coaster that reminds people of drinking water every half hour. If the user doesn’t take the cup off the coaster
+it will keep beeping regularly.
+            <p>
+            Prototype Mechanism: The prototype uses a photoresistor to detect the light changes above the coaster. When it detects a cup on the coaster it starts timing,
+after 30 minutes the coaster will beep to remind the user to drink.
+            </p>
+
+
+            </p>
+            <p>
+            <img src="Photo.jpg" width=800></a>
+            </p>
+            <p>
+             Prototype photo
+            </p>
+            <iframe width="420" height="315"
+src="https://youtu.be/GRbpmgxY_bE">
+</iframe>
+            </p>
+            <p>
+            This is the the video demo!
+            </p>
+            <img src="Schematic7.jpg" width=800></a>
+            </p>
+            <p>
+             Circuit's Schematic
+            </p>
+            <img src="Circuit7.jpg" width=800></a>
+            </p>
+            <p>
+             Photo of the Circuit
+            </p>
+            <br>
+            <p>
+             Firmware:
+            </p>
+            <p>
+            <pre>
+  	<code>
+int buzzer = 10;//the pin of the active buzzer
+int timer = 0; // countdown timer
+
+void setup() {
+  // put your setup code here, to run once:
+  // initialize the pin 10 as an output:
+  pinMode(10, OUTPUT);
+  // initialize pin 11 as an input:
+  pinMode(A0, INPUT);
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+}
+
+void loop() {
+  int value = analogRead(A0);
+  Serial.println("Analog value : ");
+  Serial.println(value);
+  delay(250);
+  if (value <= 20){ // if light value is below 20
+    for (int i = 0;i < 1800;i++){ // wait for 1800 sec, 30min to beep
+//    for (int i = 0;i < 5;i++){ //test code, 5 second countdown
+      delay (1000); // delay 1 sec
+      value = analogRead(A0); // detect light value
+      timer++; // timer + 1 sec
+      if (value > 20){ // cup is removed, break the loop, reset timer
+        timer = 0;
+        break;
+      }
+    }
+    if (timer == 1800){
+//    if (timer == 5){ //test code, 5 second countdown
+      while (1){ // if the light value is still under 20, means the cup is still there, so keep beeping every 2 min.
+        digitalWrite(buzzer,HIGH);
+        delay(1);//wait for 1ms
+        digitalWrite(buzzer,LOW);
+        delay(2000); // wait for 2 sec
+        value = analogRead(A0); //detect light value
+        if (value > 20){ // cup is removed, break the loop, reset timer
+          timer = 0; 
+          break;
+        }
+      }
+    }
+  }  
+}
+
+  	</code>
+            </pre>
+            </p>
+        </div>
+        
+    </body>
+</html>
